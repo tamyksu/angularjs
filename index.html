@@ -1,16 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myFirstApp">
+<html  ng-app="myFirstApp">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="app.js"></script>
-    <script src="angular.min.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>To do list</title>
 </head>
-<body>
-    <div ng-controller="MyFirstController">
+<body >
+   <h1>To do List:</h1>
+   <div ng-controller="ToDoListController">
+   <form   name="form">
+       Enter item : 
+       <input 
+       name="newitem"
+       type="text"
+       ng-model="item1"
+       required
+      />
+      <button ng-disabled="form.$invalid" ng-click="addItem()" >Save</button>
+   </form>
+      
+      <div>
+          <table class="center">
+              <tr>
+                  <th>Id</th>
+                  <th>Item</th>
+                  <th>Delete</th>
+              </tr>
+              <tr ng-repeat="x in arr" ng-if="arr.indexOf(x) > 0">
+                <td>{{arr.indexOf(x)}}</td>
+                <td>{{x.content}}</td>
+                <td><button ng-click="deleteItem(arr.indexOf(x))">Delete</button></td>
+              </tr>
+              
 
-    </div>
+          </table>
+      </div>
+  
+</div>
 </body>
 </html>
